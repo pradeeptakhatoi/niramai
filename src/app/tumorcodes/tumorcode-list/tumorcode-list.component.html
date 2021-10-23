@@ -1,0 +1,40 @@
+<div class="search-container">
+  <form (submit)="onSearch(searchForm)" #searchForm="ngForm">
+    <input name="keyword" ngModel type="text" placeholder="Search..">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+
+<table mat-table [dataSource]="tumorCodes" class="mat-elevation-z8">
+  <ng-container matColumnDef="case_id">
+    <th mat-header-cell *matHeaderCellDef> Case ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.case_id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="tumor_site">
+    <th mat-header-cell *matHeaderCellDef> Tumor Site </th>
+    <td mat-cell *matCellDef="let element"> {{element.tumor_site}} </td>
+  </ng-container>
+  <ng-container matColumnDef="BMI">
+    <th mat-header-cell *matHeaderCellDef> BMI </th>
+    <td mat-cell *matCellDef="let element"> {{element.BMI}} </td>
+  </ng-container>
+  <ng-container matColumnDef="height_in_cm">
+    <th mat-header-cell *matHeaderCellDef> Height In CM </th>
+    <td mat-cell *matCellDef="let element"> {{element.height_in_cm}} </td>
+  </ng-container>
+  <ng-container matColumnDef="weight_in_kg">
+    <th mat-header-cell *matHeaderCellDef> Weight in Kg </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight_in_kg}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="totalRecords" [pageSize]="recordsPerPage" [pageSizeOptions]="pageSizeOptions"
+  (page)="onChangedPage($event)" *ngIf="tumorCodes.length > 0"></mat-paginator>
+
+<p class="info-text mat-body-1" *ngIf="tumorCodes.length <= 0 && !isLoading">No Data Found!</p>
+
+<div style="width: 100px; margin: 0 auto;">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>

@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSubmit(profileForm)" #profileForm="ngForm" *ngIf="!isLoading">
+      <mat-form-field>
+        <input matInput name="name" ngModel type="text" placeholder="Name" #nameInput="ngModel" required>
+        <mat-error *ngIf="nameInput.invalid">Please enter name.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="address" ngModel type="text" placeholder="Address" #addressInput="ngModel" required>
+        <mat-error *ngIf="addressInput.invalid">Please enter address.</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Update</button>
+    </form>
+  </mat-card>

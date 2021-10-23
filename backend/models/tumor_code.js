@@ -1,0 +1,51 @@
+const mongoose = require("mongoose");
+
+const tumorCodeSchema = mongoose.Schema({
+    tumor_code: { type: String, required: false },
+    case_id: { type: String, required: false },
+    discovery_study: { type: String, required: false },
+    "discovery_study/analyzed_samples": { type: String, required: false },
+    confirmatory_study: { type: String, required: false },
+    gender: { type: String, required: false },
+    age: { type: String, required: false },
+    height_in_cm: { type: String, required: false },
+    weight_in_kg: { type: String, required: false },
+    BMI: { type: String, required: false },
+    race: { type: String, required: false },
+    ethnicity: { type: String, required: false },
+    tumor_site: { type: String, required: false },
+    tumor_size_in_cm: { type: String, required: false },
+    histologic_type: { type: String, required: false },
+    histologic_grade: { type: String, required: false },
+    tumor_stage_pathological: { type: String, required: false },
+    AJCC_or_TNM_cancer_staging_edition: { type: String, required: false },
+    pathologic_staging_primary_tumor_pT: { type: String, required: false },
+    pathologic_staging_regional_lymph_nodes_pN: { type: String, required: false },
+    pathologic_staging_distant_metastasis_pM: { type: String, required: false },
+    clinical_staging_distant_metastasis_cM: { type: String, required: false },
+    vital_status_at_12months_follow_up: { type: String, required: false },
+    vital_status_at_24months_follow_up: { type: String, required: false },
+    residual_tumor: { type: String, required: false },
+    alcohol_consumption: { type: String, required: false },
+    tobacco_smoking_history: { type: String, required: false },
+    number_of_pack_years_smoked: { type: String, required: false },
+    tumor_status_at_12months_follow_up: { type: String, required: false },
+    tumor_status_at_24months_follow_up: { type: String, required: false },
+    days_from_initial_diagnosis_to_last_contact_at_12months_follow_up: { type: String, required: false },
+    days_from_initial_diagnosis_to_last_contact_at_24months_follow_up: { type: String, required: false },
+    specimens: [
+        {
+            specimen_id: { type: String, required: false },
+            slide_id: { type: String, required: false },
+            tissue_type: { type: String, required: false },
+            percent_tumor_surface_area: { type: String, required: false },
+            percent_tumor_nuclei: { type: String, required: false },
+            percent_necrotic_surface_area: { type: String, required: false },
+            weight_in_mg: { type: String, required: false },
+        }
+    ],
+    inserted: { type: String, required: false },
+    updated: { type: String, required: false },
+});
+
+module.exports = mongoose.model("TumorCode", tumorCodeSchema);
